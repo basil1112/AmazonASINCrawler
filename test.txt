@@ -1,0 +1,4 @@
+Steps 
+npm install in root directory ie: amazon_crawl
+cd crawler
+node main.js
