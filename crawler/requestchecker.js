@@ -54,8 +54,9 @@ const crawlerFunction = async () => {
      *  set ASIN DATA data to the process function 
      *  Reference method util.js fn:setFilePath
      */
-    //utils.setFilePath(__dirname + "/apify_storage/datasets/firstdataset/000000001.json");
-    await utils.processDataSet();
+    utils.setFilePath(__dirname + "/apify_storage/datasets/firstdataset/input.json");
+    //await utils.processDataSet();
+    await utils.getAuthKey('https://www.amazon.in/dp/B07BMXQRL9');
 
 }
 
@@ -63,29 +64,6 @@ clearPreviousState(key_value_store).then(e => {
 
     Apify.main(crawlerFunction);
 });
-
-
-const crawlerFunctionSingle = async (data) => {
-    /**
-     *  set ASIN DATA data to the process function 
-     *  Reference method util.js fn:setFilePath
-     */
-    await utils.processDataSetFromJson(data);
-
-}
-
-
-const crawFromRequest = (data) => {
-
-    clearPreviousState(key_value_store).then(e => {
-        Apify.main(crawlerFunctionSingle(data));
-    });
-}
-
-
-module.exports = crawFromRequest;
-
-
 
 
 
